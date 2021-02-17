@@ -13,6 +13,7 @@ class UzytkownikMenedzer {
 	int idZalogowanegoUzytkownika;
 	vector <Uzytkownik> uzytkownicy;
 	PlikZUzytkownikami plikZUzytkownikami;
+	
 	Uzytkownik podajDaneNowegoUzytkownika();
 	int pobierzIdNowegoUzytkownika();
 	bool czyIstniejeLogin(string login);
@@ -20,6 +21,7 @@ class UzytkownikMenedzer {
 public:
 	void rejestracjaUzytkownika();
 	void wypiszWszystkichUzytkownikow();
+	void wczytajUzytkownikowZPliku();
 };
 
 #endif
