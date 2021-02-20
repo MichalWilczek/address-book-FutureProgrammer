@@ -14,7 +14,6 @@ public:
 	void ustawId(int noweID);
 	void ustawLogin(string nowyLogin);
 	void ustawHaslo(string noweHaslo);
-
 	int pobierzId();
 	string pobierzLogin();
 	string pobierzHaslo();

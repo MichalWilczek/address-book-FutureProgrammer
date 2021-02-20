@@ -28,8 +28,8 @@ public:
 	void wczytajUzytkownikowZPliku();
 	void rejestracjaUzytkownika();
 	void logowanieUzytkownika();
-	void wylogowanieUzytkownika();
 	void zmianaHaslaZalogowanegoUzytkownika();
+	void wylogowanieUzytkownika();
 };
 
 #endif

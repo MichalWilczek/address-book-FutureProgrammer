@@ -7,7 +7,6 @@
 using namespace std;
 
 class KsiazkaAdresowa {
-
 	UzytkownikMenedzer uzytkownikMenedzer;
 	AdresMenedzer adresMenedzer;
 

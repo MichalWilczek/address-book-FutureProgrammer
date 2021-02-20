@@ -15,6 +15,7 @@ using namespace std;
 class PlikZAdresami :public Plik {
 	int idOstatniegoAdresata;
 	Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
+	
 	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
