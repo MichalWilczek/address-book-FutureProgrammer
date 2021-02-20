@@ -10,6 +10,13 @@ void UzytkownikMenedzer::rejestracjaUzytkownika() {
     system("pause");
 }
 
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
+    if (idZalogowanegoUzytkownika > 0)
+        return idZalogowanegoUzytkownika;
+    else
+        throw invalid_argument("received value lower than 1...");
+}
+
 void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
     for (int i = 0; i < uzytkownicy.size(); i++) {
         cout << uzytkownicy[i].pobierzId() << endl;
@@ -113,6 +120,6 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
-void UzytkownikMenedzer::wylogowanieUzytkonika() {
+void UzytkownikMenedzer::wylogowanieUzytkownika() {
     idZalogowanegoUzytkownika = 0;
 }
