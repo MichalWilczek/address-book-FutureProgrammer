@@ -6,6 +6,7 @@
 #include <windows.h>
 #include "Uzytkownik.h"
 #include "PlikZUzytkownikami.h"
+#include "MetodyPomocnicze.h"
 
 using namespace std;
 
@@ -20,9 +21,12 @@ class UzytkownikMenedzer {
 
 public:
 	UzytkownikMenedzer(string nazwaPlikuZUzytkonikami) : plikZUzytkownikami(nazwaPlikuZUzytkonikami) {};
-	void rejestracjaUzytkownika();
 	void wypiszWszystkichUzytkownikow();
 	void wczytajUzytkownikowZPliku();
+	void rejestracjaUzytkownika();
+	void logowanieUzytkownika();
+	void wylogowanieUzytkonika();
+	void zmianaHaslaZalogowanegoUzytkownika();
 };
 
 #endif
