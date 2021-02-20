@@ -9,6 +9,7 @@ using namespace std;
 class MetodyPomocnicze {
 public:
 	static string konwersjaIntNaString(int liczba);
+	static string wczytajLinie();
 };
 
 #endif
