@@ -20,7 +20,7 @@ Adresat AdresMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
 {
     Adresat adresat;
 
-    adresat.ustawId(plikZAdresami.pobierzIdOstatniegoAdresata() + 1);
+    adresat.ustawId(plikZAdresami.ustawNoweIdOstatniegoAdresata());
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
     cout << "Podaj imie: ";

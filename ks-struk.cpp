@@ -1,5 +1,5 @@
 
-
+/*
 #include <iostream>
 #include <fstream>
 #include <windows.h>
@@ -1085,5 +1085,4 @@ char wybierzOpcjeZMenuUzytkownika()
 
     return wybor;
 }
-
 */

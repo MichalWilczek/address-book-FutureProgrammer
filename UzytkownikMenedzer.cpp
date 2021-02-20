@@ -11,7 +11,10 @@ void UzytkownikMenedzer::rejestracjaUzytkownika() {
 }
 
 int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
-    return idZalogowanegoUzytkownika;
+    if (idZalogowanegoUzytkownika > 0)
+        return idZalogowanegoUzytkownika;
+    else
+        throw invalid_argument("received value lower than 1...");
 }
 
 void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {

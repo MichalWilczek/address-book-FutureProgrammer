@@ -37,15 +37,12 @@ vector <Adresat> PlikZAdresami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(in
     return adresaci;
 }
 
-int PlikZAdresami::pobierzIdOstatniegoAdresata() {
+int PlikZAdresami::ustawNoweIdOstatniegoAdresata() {
+    idOstatniegoAdresata++;
     return idOstatniegoAdresata;
 }
 
-void PlikZAdresami::ustawIdOstatniegoAdresata(int noweId) {
-    idOstatniegoAdresata = noweId;
-}
-
-Adresat PlikZAdresami::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami, Adresat adresat)
+Adresat PlikZAdresami::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami)
 {
     Adresat adresat;
     string pojedynczaDanaAdresata = "";
@@ -117,7 +114,7 @@ void PlikZAdresami::dopiszAdresataDoPliku(Adresat adresat)
     {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (czyPlikJestPusty() == true)
+        if (czyPlikJestPusty(plikTekstowy) == true)
         {
             plikTekstowy << liniaZDanymiAdresata;
         }
@@ -134,7 +131,7 @@ void PlikZAdresami::dopiszAdresataDoPliku(Adresat adresat)
     system("pause");
 }
 
-string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat)
+string PlikZAdresami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat)
 {
     string liniaZDanymiAdresata = "";
 

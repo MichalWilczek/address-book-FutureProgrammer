@@ -13,7 +13,7 @@ using namespace std;
 class Plik {
 protected:
 	const string nazwaPliku;
-	bool czyPlikJestPusty();
+	bool czyPlikJestPusty(fstream& plikTekstowy);
 
 public:
 	Plik(string NAZWAPLIKU) : nazwaPliku(NAZWAPLIKU) {};

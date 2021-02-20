@@ -18,8 +18,7 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
 }
 
 void KsiazkaAdresowa::wylogowanieUzytkownika() {
-	uzytkownikMenedzer.wylogowanieUzytkonika();
-
+	uzytkownikMenedzer.wylogowanieUzytkownika();
 }
 
 void KsiazkaAdresowa::dodajAdresata() {
