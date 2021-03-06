@@ -45,6 +45,11 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
     return uzytkownik;
 }
 
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany() {
+    if (idZalogowanegoUzytkownika > 0) return true;
+    else return false;
+}
+
 int UzytkownikMenedzer::pobierzIdNowegoUzytkownika() {
     if (uzytkownicy.empty() == true)
         return 1;
@@ -60,10 +65,6 @@ bool UzytkownikMenedzer::czyIstniejeLogin(string login) {
         }
     }
     return false;
-}
-
-void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
 void UzytkownikMenedzer::logowanieUzytkownika() {
