@@ -105,6 +105,7 @@ void PlikZAdresami::dopiszAdresataDoPliku(Adresat adresat) {
     } else {
         cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
     }
+    idOstatniegoAdresata++;
     plikTekstowy.close();
     system("pause");
 }

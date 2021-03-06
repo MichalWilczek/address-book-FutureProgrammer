@@ -12,28 +12,26 @@ void AdresMenedzer::dodajAdresata(int idZalogowanegoUzytkownika) {
 }
 
 Adresat AdresMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika) {
-    Adresat adresat;
-
-    adresat.ustawId(plikZAdresami.pobierzIdOstatniegoAdresata() + 1);
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
-
+    
     cout << "Podaj imie: ";
     string imie = MetodyPomocnicze::wczytajLinie();
-    adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie));
+    imie = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
 
     cout << "Podaj nazwisko: ";
     string nazwisko = MetodyPomocnicze::wczytajLinie();
-    adresat.ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko));
+    nazwisko = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
 
     cout << "Podaj numer telefonu: ";
-    adresat.ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
+    string numerTelefonu = MetodyPomocnicze::wczytajLinie();
 
     cout << "Podaj email: ";
-    adresat.ustawEmail(MetodyPomocnicze::wczytajLinie());
+    string email = MetodyPomocnicze::wczytajLinie();
 
     cout << "Podaj adres: ";
-    adresat.ustawAdres(MetodyPomocnicze::wczytajLinie());
+    string adres = MetodyPomocnicze::wczytajLinie();
 
+    int idNowegoAdresata = plikZAdresami.pobierzIdOstatniegoAdresata() + 1;
+    Adresat adresat(idNowegoAdresata, idZalogowanegoUzytkownika, imie, nazwisko, numerTelefonu, email, adres);
     return adresat;
 }
 
