@@ -8,7 +8,7 @@ vector <Adresat> PlikZAdresami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(in
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPliku.c_str(), ios::in);
+    plikTekstowy.open(NAZWA_PLIKU.c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
     {
@@ -107,7 +107,7 @@ void PlikZAdresami::dopiszAdresataDoPliku(Adresat adresat)
 {
     string liniaZDanymiAdresata = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPliku.c_str(), ios::out | ios::app);
+    plikTekstowy.open(NAZWA_PLIKU.c_str(), ios::out | ios::app);
 
     if (plikTekstowy.good() == true)
     {
