@@ -1,11 +1,6 @@
 #include "AdresMenedzer.h"
 
-void AdresMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika) {
-	adresaci = plikZAdresami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
-}
-
-void AdresMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)
-{
+void AdresMenedzer::dodajAdresata(int idZalogowanegoUzytkownika) {
     Adresat adresat;
 
     system("cls");
@@ -16,11 +11,10 @@ void AdresMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)
     plikZAdresami.dopiszAdresataDoPliku(adresat);
 }
 
-Adresat AdresMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
-{
+Adresat AdresMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika) {
     Adresat adresat;
 
-    adresat.ustawId(plikZAdresami.ustawNoweIdOstatniegoAdresata());
+    adresat.ustawId(plikZAdresami.pobierzIdOstatniegoAdresata() + 1);
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
     cout << "Podaj imie: ";
@@ -43,28 +37,22 @@ Adresat AdresMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
     return adresat;
 }
 
-void AdresMenedzer::wyswietlWszystkichAdresatow()
-{
+void AdresMenedzer::wyswietlWszystkichAdresatow() {
     system("cls");
-    if (!adresaci.empty())
-    {
+    if (!adresaci.empty()) {
         cout << "             >>> ADRESACI <<<" << endl;
         cout << "-----------------------------------------------" << endl;
-        for (vector <Adresat> ::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
-        {
+        for (vector <Adresat> ::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++) {
             wyswietlDaneAdresata(*itr);
         }
         cout << endl;
-    }
-    else
-    {
+    } else {
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
 }
 
-void AdresMenedzer::wyswietlDaneAdresata(Adresat adresat)
-{
+void AdresMenedzer::wyswietlDaneAdresata(Adresat adresat) {
     cout << endl << "Id:                 " << adresat.pobierzId() << endl;
     cout << "Imie:               " << adresat.pobierzImie() << endl;
     cout << "Nazwisko:           " << adresat.pobierzNazwisko() << endl;

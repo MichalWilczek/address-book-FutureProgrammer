@@ -24,6 +24,7 @@ public:
 		uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 		idZalogowanegoUzytkownika = 0;
 	};
+	bool czyUzytkownikJestZalogowany();
 	int pobierzIdZalogowanegoUzytkownika();
 	void wypiszWszystkichUzytkownikow();
 	void rejestracjaUzytkownika();

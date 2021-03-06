@@ -24,7 +24,7 @@ public:
 	PlikZAdresami(string NAZWAPLIKU) : Plik(NAZWAPLIKU) {
 		idOstatniegoAdresata = 0;
 	};
-	int ustawNoweIdOstatniegoAdresata();
+	int pobierzIdOstatniegoAdresata();
 	vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
 	void dopiszAdresataDoPliku(Adresat adresat);
 };

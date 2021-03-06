@@ -45,6 +45,11 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
     return uzytkownik;
 }
 
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany() {
+    if (idZalogowanegoUzytkownika > 0) return true;
+    else return false;
+}
+
 int UzytkownikMenedzer::pobierzIdNowegoUzytkownika() {
     if (uzytkownicy.empty() == true)
         return 1;
