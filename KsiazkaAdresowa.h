@@ -15,13 +15,6 @@ class KsiazkaAdresowa {
 	
 	char wybierzOpcjeZMenuGlownego();
 	char wybierzOpcjeZMenuUzytkownika();
-	void rejestracjaUzytkownika();
-	void wypiszWszystkichUzytkownikow();
-	void logowanieUzytkownika();
-	void zmianaHaslaZalogowanegoUzytkownika();
-	void wylogowanieUzytkownika();
-	void dodajAdresata();
-	void wyswietlWszystkichAdresatow();
 
 public:
 	KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) :
@@ -32,6 +25,14 @@ public:
 		delete adresMenedzer;
 		adresMenedzer = NULL;
 	}
+
+	void rejestracjaUzytkownika();
+	void wypiszWszystkichUzytkownikow();
+	void logowanieUzytkownika();
+	void zmianaHaslaZalogowanegoUzytkownika();
+	void wylogowanieUzytkownika();
+	void dodajAdresata();
+	void wyswietlWszystkichAdresatow();
 	void run();
 };
 
