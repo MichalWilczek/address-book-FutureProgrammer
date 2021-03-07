@@ -45,7 +45,7 @@ void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
 }
 
 void KsiazkaAdresowa::run() {
-    char wybor;
+    char wybor = { 0 };
 
     while (true) {
         if (!uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
@@ -69,8 +69,7 @@ void KsiazkaAdresowa::run() {
         } else {
             wybor = wybierzOpcjeZMenuUzytkownika();
 
-            switch (wybor)
-            {
+            switch (wybor) {
             case '1':
                 dodajAdresata();
                 break;
@@ -109,7 +108,7 @@ void KsiazkaAdresowa::run() {
 }
 
 char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego() {
-    char wybor;
+    char wybor = { 0 };
 
     system("cls");
     cout << "    >>> MENU  GLOWNE <<<" << endl;
@@ -125,7 +124,7 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego() {
 }
 
 char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika() {
-    char wybor;
+    char wybor = { 0 };
 
     system("cls");
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
