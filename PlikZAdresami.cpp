@@ -34,6 +34,70 @@ vector <Adresat> PlikZAdresami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(in
     return adresaci;
 }
 
+int PlikZAdresami::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
+{
+    bool czyIstniejeAdresat = false;
+    int numerLiniiWPlikuTekstowym = 1;
+    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    fstream plikTekstowy;
+    plikTekstowy.open(NAZWA_PLIKU, ios::in);
+
+    if (plikTekstowy.good() == true && idAdresata != 0)
+    {
+        while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
+        {
+            if (idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
+            {
+                czyIstniejeAdresat = true;
+                plikTekstowy.close();
+                return numerLiniiWPlikuTekstowym;
+            }
+            else
+                numerLiniiWPlikuTekstowym++;
+        }
+        if (czyIstniejeAdresat == false)
+        {
+            plikTekstowy.close();
+            return 0;
+        }
+    }
+    return 0;
+}
+
+void PlikZAdresami::usunWybranaLinieWPliku(int numerUsuwanejLinii)
+{
+    fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
+    string wczytanaLinia = "";
+    int numerWczytanejLinii = 1;
+
+    odczytywanyPlikTekstowy.open(NAZWA_PLIKU, ios::in);
+    tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU, ios::out | ios::app);
+
+    if (odczytywanyPlikTekstowy.good() == true && numerUsuwanejLinii != 0)
+    {
+        while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
+        {
+            // Tych przypadkow jest tyle, gdyz chcemy osiagnac taki efekt,
+            // aby na koncu pliku nie bylo pustej linii
+            if (numerWczytanejLinii == numerUsuwanejLinii) {}
+            else if (numerWczytanejLinii == 1 && numerWczytanejLinii != numerUsuwanejLinii)
+                tymczasowyPlikTekstowy << wczytanaLinia;
+            else if (numerWczytanejLinii == 2 && numerUsuwanejLinii == 1)
+                tymczasowyPlikTekstowy << wczytanaLinia;
+            else if (numerWczytanejLinii > 2 && numerUsuwanejLinii == 1)
+                tymczasowyPlikTekstowy << endl << wczytanaLinia;
+            else if (numerWczytanejLinii > 1 && numerUsuwanejLinii != 1)
+                tymczasowyPlikTekstowy << endl << wczytanaLinia;
+            numerWczytanejLinii++;
+        }
+        odczytywanyPlikTekstowy.close();
+        tymczasowyPlikTekstowy.close();
+
+        usunPlik(NAZWA_PLIKU);
+        zmienNazwePliku(NAZWA_TYMCZASOWEGO_PLIKU, NAZWA_PLIKU);
+    }
+}
+
 Adresat PlikZAdresami::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami) {
     Adresat adresat;
     string pojedynczaDanaAdresata = "";
@@ -42,7 +106,8 @@ Adresat PlikZAdresami::pobierzDaneAdresata(string daneAdresataOddzielonePionowym
     for (int pozycjaZnaku = 0; pozycjaZnaku < daneAdresataOddzielonePionowymiKreskami.length(); pozycjaZnaku++) {
         if (daneAdresataOddzielonePionowymiKreskami[pozycjaZnaku] != '|') {
             pojedynczaDanaAdresata += daneAdresataOddzielonePionowymiKreskami[pozycjaZnaku];
-        } else {
+        }
+        else {
             switch (numerPojedynczejDanejAdresata) {
             case 1:
                 adresat.ustawId(atoi(pojedynczaDanaAdresata.c_str()));

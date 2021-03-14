@@ -33,6 +33,7 @@ public:
 	void wylogowanieUzytkownika();
 	void dodajAdresata();
 	void wyswietlWszystkichAdresatow();
+	void usunAdresata();
 	void run();
 };
 

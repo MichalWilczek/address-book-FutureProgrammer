@@ -17,6 +17,8 @@ protected:
 
 public:
 	Plik(string NAZWAPLIKU) : NAZWA_PLIKU(NAZWAPLIKU) {};
+	static void usunPlik(string nazwaPlikuZRozszerzeniem);
+	static void zmienNazwePliku(string staraNazwa, string nowaNazwa);
 };
 
 #endif
