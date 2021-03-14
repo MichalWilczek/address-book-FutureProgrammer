@@ -54,6 +54,16 @@ void KsiazkaAdresowa::usunAdresata() {
     }
 }
 
+void KsiazkaAdresowa::edytujAdresata() {
+    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
+        adresMenedzer->edytujAdresata();
+    }
+    else {
+        cout << "Aby edytowac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
 void KsiazkaAdresowa::run() {
     char wybor = { 0 };
 
@@ -99,12 +109,9 @@ void KsiazkaAdresowa::run() {
             case '5':
                 usunAdresata();
                 break;
-            /*
             case '6':
-                cout << "Not implemented" << endl;
-                Sleep(2000);
+                edytujAdresata();
                 break;
-            */
             case '7':
                 zmianaHaslaZalogowanegoUzytkownika();
                 break;

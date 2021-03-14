@@ -34,6 +34,11 @@ vector <Adresat> PlikZAdresami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(in
     return adresaci;
 }
 
+void usunWybranaLinieWPlikuZPoszukiwanymAdresatem(int idAdresata) {
+    int numerLinii = zwrocNumerLiniiSzukanegoAdresata(idAdresata);
+    usunWybranaLinieWPliku(numerLinii);
+}
+
 int PlikZAdresami::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
 {
     bool czyIstniejeAdresat = false;
