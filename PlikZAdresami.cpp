@@ -34,11 +34,6 @@ vector <Adresat> PlikZAdresami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(in
     return adresaci;
 }
 
-void usunWybranaLinieWPlikuZPoszukiwanymAdresatem(int idAdresata) {
-    int numerLinii = zwrocNumerLiniiSzukanegoAdresata(idAdresata);
-    usunWybranaLinieWPliku(numerLinii);
-}
-
 int PlikZAdresami::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
 {
     bool czyIstniejeAdresat = false;
@@ -100,6 +95,30 @@ void PlikZAdresami::usunWybranaLinieWPliku(int numerUsuwanejLinii)
 
         usunPlik(NAZWA_PLIKU);
         zmienNazwePliku(NAZWA_TYMCZASOWEGO_PLIKU, NAZWA_PLIKU);
+    }
+}
+
+void PlikZAdresami::ustawIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata) {
+    if (idUsuwanegoAdresata == idOstatniegoAdresata) {
+        idOstatniegoAdresata = 0;
+        string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+        string daneOstaniegoAdresataWPliku = "";
+        fstream plikTekstowy;
+        plikTekstowy.open(NAZWA_PLIKU, ios::in);
+
+        if (plikTekstowy.good() == true)
+        {
+            while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami)) {}
+            daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
+            plikTekstowy.close();
+        }
+        else
+            cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
+
+        if (daneOstaniegoAdresataWPliku != "")
+        {
+            idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
+        }
     }
 }
 

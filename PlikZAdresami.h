@@ -20,8 +20,6 @@ class PlikZAdresami :public Plik {
 	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
-	int zwrocNumerLiniiSzukanegoAdresata(int idAdresata);
-	void usunWybranaLinieWPliku(int numerUsuwanejLinii);
 
 public:
 	PlikZAdresami(string NAZWAPLIKU) : Plik(NAZWAPLIKU), NAZWA_TYMCZASOWEGO_PLIKU("AdresaciTymczasowi.txt") {
@@ -30,7 +28,9 @@ public:
 	int pobierzIdOstatniegoAdresata();
 	vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
 	void dopiszAdresataDoPliku(Adresat adresat);
-	void usunWybranaLinieWPlikuZPoszukiwanymAdresatem(int idAdresata);
+	void ustawIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata);
+	int zwrocNumerLiniiSzukanegoAdresata(int idAdresata);
+	void usunWybranaLinieWPliku(int numerUsuwanejLinii);
 };
 
 #endif
