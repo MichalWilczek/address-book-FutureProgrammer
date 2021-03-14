@@ -28,8 +28,11 @@ void AdresMenedzer::usunAdresata() {
             cout << endl << "Potwierdz naciskajac klawisz 't': ";
             znak = MetodyPomocnicze::wczytajZnak();
             if (znak == 't') {
+                /*
                 numerLiniiUsuwanegoAdresata = plikZAdresami.zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);
                 plikZAdresami.usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata);
+                */
+                plikZAdresami.usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
                 adresaci.erase(itr);
                 cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
                 system("pause");
