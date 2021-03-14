@@ -64,31 +64,29 @@ int PlikZAdresami::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
     return 0;
 }
 
-void PlikZAdresami::usunWybranaLinieWPliku(int numerUsuwanejLinii)
-{
+void PlikZAdresami::usunWybranegoAdresataZPliku(int idUsuwanegoAdresata) {
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
     string wczytanaLinia = "";
-    int numerWczytanejLinii = 1;
+    bool pierwszaZapisanaLinia = true;
 
     odczytywanyPlikTekstowy.open(NAZWA_PLIKU, ios::in);
     tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU, ios::out | ios::app);
 
-    if (odczytywanyPlikTekstowy.good() == true && numerUsuwanejLinii != 0)
+    if (odczytywanyPlikTekstowy.good() == true)
     {
         while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
         {
-            // Tych przypadkow jest tyle, gdyz chcemy osiagnac taki efekt,
-            // aby na koncu pliku nie bylo pustej linii
-            if (numerWczytanejLinii == numerUsuwanejLinii) {}
-            else if (numerWczytanejLinii == 1 && numerWczytanejLinii != numerUsuwanejLinii)
-                tymczasowyPlikTekstowy << wczytanaLinia;
-            else if (numerWczytanejLinii == 2 && numerUsuwanejLinii == 1)
-                tymczasowyPlikTekstowy << wczytanaLinia;
-            else if (numerWczytanejLinii > 2 && numerUsuwanejLinii == 1)
-                tymczasowyPlikTekstowy << endl << wczytanaLinia;
-            else if (numerWczytanejLinii > 1 && numerUsuwanejLinii != 1)
-                tymczasowyPlikTekstowy << endl << wczytanaLinia;
-            numerWczytanejLinii++;
+            int idWczytanegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia);
+            
+            // Pomin przypadek dot. ID usuwanego adresata
+            if (idWczytanegoAdresata != idUsuwanegoAdresata) {
+                if (pierwszaZapisanaLinia) {
+                    tymczasowyPlikTekstowy << wczytanaLinia;
+                    pierwszaZapisanaLinia = false;
+                } else {
+                    tymczasowyPlikTekstowy << endl << wczytanaLinia;
+                }
+            }
         }
         odczytywanyPlikTekstowy.close();
         tymczasowyPlikTekstowy.close();
