@@ -16,13 +16,15 @@ class AdresMenedzer {
 
 	void wyswietlDaneAdresata(Adresat adresat);
 	Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika);
-	
+	int podajIdWybranegoAdresata();
+
 public:
 	AdresMenedzer(string nazwaPlikuZAdresami, int idZalogowanegoUzytkownika)
 		: plikZAdresami(nazwaPlikuZAdresami), ID_ZALOGOWANEGO_UZYKOWNIKA(idZalogowanegoUzytkownika) {
 		adresaci = plikZAdresami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYKOWNIKA);
 	};
 	void dodajAdresata(int idZalogowanegoUzytkownika);
+	int usunAdresata();
 	void wyswietlWszystkichAdresatow();
 };
 
