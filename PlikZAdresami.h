@@ -32,7 +32,7 @@ public:
 	void dopiszAdresataDoPliku(Adresat adresat);
 	void usunWybranegoAdresataZPliku(int idUsuwanegoAdresata);
 	void ustawIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata);
-	void zaktualizujDaneWybranegoAdresata(Adresat adresat, int idEdytowanegoAdresata);
+	void zaktualizujDaneWybranegoAdresata(Adresat adresat);
 };
 
 #endif
