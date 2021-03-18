@@ -39,9 +39,29 @@ void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
 		adresMenedzer->wyswietlWszystkichAdresatow();
 	}
 	else {
-		cout << "Aby wyswietlic adesatow, nalezy najpierw sie zalogowac" << endl;
+		cout << "Aby wyswietlic adresatow, nalezy najpierw sie zalogowac" << endl;
 		system("pause");
 	}
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu() {
+    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
+        adresMenedzer->wyszukajAdresatowPoImieniu();
+    }
+    else {
+        cout << "Aby wyszukac adresatow po imieniu, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku() {
+    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
+        adresMenedzer->wyszukajAdresatowPoNazwisku();
+    }
+    else {
+        cout << "Aby wyszukac adresatow po nazwisku, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
 }
 
 void KsiazkaAdresowa::usunAdresata() {
@@ -93,16 +113,12 @@ void KsiazkaAdresowa::run() {
             case '1':
                 dodajAdresata();
                 break;
-            /*
             case '2':
-                cout << "Not implemented" << endl;
-                Sleep(2000);
+                wyszukajAdresatowPoImieniu();
                 break;
             case '3':
-                cout << "Not implemented" << endl;
-                Sleep(2000);
+                wyszukajAdresatowPoNazwisku();
                 break;
-            */
             case '4':
                 wyswietlWszystkichAdresatow();
                 break;
@@ -146,8 +162,8 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika() {
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Dodaj adresata" << endl;
-    //cout << "2. Wyszukaj po imieniu" << endl;
-    //cout << "3. Wyszukaj po nazwisku" << endl;
+    cout << "2. Wyszukaj po imieniu" << endl;
+    cout << "3. Wyszukaj po nazwisku" << endl;
     cout << "4. Wyswietl adresatow" << endl;
     cout << "5. Usun adresata" << endl;
     cout << "6. Edytuj adresata" << endl;
