@@ -1,6 +1,6 @@
 #include "AdresMenedzer.h"
 
-void ContactsManager::dodajAdresata(int idZalogowanegoUzytkownika) {
+void ContactsManager::addContact(int idZalogowanegoUzytkownika) {
     Adresat adresat;
 
     system("cls");
@@ -11,7 +11,7 @@ void ContactsManager::dodajAdresata(int idZalogowanegoUzytkownika) {
     plikZAdresami.dopiszAdresataDoPliku(adresat);
 }
 
-void ContactsManager::usunAdresata() {
+void ContactsManager::deleteContact() {
     int idUsuwanegoAdresata = 0;
     int numerLiniiUsuwanegoAdresata = 0;
 
@@ -26,7 +26,7 @@ void ContactsManager::usunAdresata() {
         if (itr->pobierzId() == idUsuwanegoAdresata) {
             czyIstniejeAdresat = true;
             cout << endl << "Potwierdz naciskajac klawisz 't': ";
-            znak = MetodyPomocnicze::wczytajZnak();
+            znak = Utils::readSign();
             if (znak == 't') {
                 plikZAdresami.usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
                 adresaci.erase(itr);
@@ -44,7 +44,7 @@ void ContactsManager::usunAdresata() {
     }
 }
 
-void ContactsManager::edytujAdresata() {
+void ContactsManager::editContact() {
     system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
@@ -65,27 +65,27 @@ void ContactsManager::edytujAdresata() {
             switch (wybor) {
             case '1':
                 cout << "Podaj nowe imie: ";
-                adresaci[i].ustawImie(MetodyPomocnicze::wczytajLinie());
+                adresaci[i].ustawImie(Utils::readLine());
                 plikZAdresami.edytujWybranegoAdresataZPliku(adresaci[i]);
                 break;
             case '2':
                 cout << "Podaj nowe nazwisko: ";
-                adresaci[i].ustawNazwisko(MetodyPomocnicze::wczytajLinie());
+                adresaci[i].ustawNazwisko(Utils::readLine());
                 plikZAdresami.edytujWybranegoAdresataZPliku(adresaci[i]);
                 break;
             case '3':
                 cout << "Podaj nowy numer telefonu: ";
-                adresaci[i].ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
+                adresaci[i].ustawNumerTelefonu(Utils::readLine());
                 plikZAdresami.edytujWybranegoAdresataZPliku(adresaci[i]);
                 break;
             case '4':
                 cout << "Podaj nowy email: ";
-                adresaci[i].ustawEmail(MetodyPomocnicze::wczytajLinie());
+                adresaci[i].ustawEmail(Utils::readLine());
                 plikZAdresami.edytujWybranegoAdresataZPliku(adresaci[i]);
                 break;
             case '5':
                 cout << "Podaj nowy adres zamieszkania: ";
-                adresaci[i].ustawAdres(MetodyPomocnicze::wczytajLinie());
+                adresaci[i].ustawAdres(Utils::readLine());
                 plikZAdresami.edytujWybranegoAdresataZPliku(adresaci[i]);
                 break;
             case '6':
@@ -107,33 +107,33 @@ int ContactsManager::podajIdWybranegoAdresata()
 {
     int idWybranegoAdresata = 0;
     cout << "Podaj numer ID Adresata: ";
-    idWybranegoAdresata = MetodyPomocnicze::wczytajLiczbeCalkowita();
+    idWybranegoAdresata = Utils::readInteger();
     return idWybranegoAdresata;
 }
 
 Adresat ContactsManager::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika) {
     
     cout << "Podaj imie: ";
-    string imie = MetodyPomocnicze::wczytajLinie();
+    string imie = Utils::readLine();
 
     cout << "Podaj nazwisko: ";
-    string nazwisko = MetodyPomocnicze::wczytajLinie();
+    string nazwisko = Utils::readLine();
 
     cout << "Podaj numer telefonu: ";
-    string numerTelefonu = MetodyPomocnicze::wczytajLinie();
+    string numerTelefonu = Utils::readLine();
 
     cout << "Podaj email: ";
-    string email = MetodyPomocnicze::wczytajLinie();
+    string email = Utils::readLine();
 
     cout << "Podaj adres: ";
-    string adres = MetodyPomocnicze::wczytajLinie();
+    string adres = Utils::readLine();
 
     int idNowegoAdresata = plikZAdresami.pobierzIdOstatniegoAdresata() + 1;
     Adresat adresat(idNowegoAdresata, idZalogowanegoUzytkownika, imie, nazwisko, numerTelefonu, email, adres);
     return adresat;
 }
 
-void ContactsManager::wyswietlWszystkichAdresatow() {
+void ContactsManager::showContactsOfLoggedInUser() {
     system("cls");
     if (!adresaci.empty()) {
         cout << "             >>> ADRESACI <<<" << endl;
@@ -148,7 +148,7 @@ void ContactsManager::wyswietlWszystkichAdresatow() {
     system("pause");
 }
 
-void ContactsManager::wyszukajAdresatowPoImieniu() {
+void ContactsManager::searchContactByFirstName() {
     string imiePoszukiwanegoAdresata = "";
     int iloscAdresatow = 0;
 
@@ -158,8 +158,8 @@ void ContactsManager::wyszukajAdresatowPoImieniu() {
         cout << ">>> WYSZUKIWANIE ADRESATOW O IMIENIU <<<" << endl << endl;
 
         cout << "Wyszukaj adresatow o imieniu: ";
-        imiePoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
-        imiePoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);
+        imiePoszukiwanegoAdresata = Utils::readLine();
+        imiePoszukiwanegoAdresata = Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(imiePoszukiwanegoAdresata);
 
         for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
         {
@@ -179,7 +179,7 @@ void ContactsManager::wyszukajAdresatowPoImieniu() {
     system("pause");
 }
 
-void ContactsManager::wyszukajAdresatowPoNazwisku() {
+void ContactsManager::searchContactBySurname() {
     string nazwiskoPoszukiwanegoAdresata;
     int iloscAdresatow = 0;
 
@@ -189,8 +189,8 @@ void ContactsManager::wyszukajAdresatowPoNazwisku() {
         cout << ">>> WYSZUKIWANIE ADRESATOW O NAZWISKU <<<" << endl << endl;
 
         cout << "Wyszukaj adresatow o nazwisku: ";
-        nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
-        nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwiskoPoszukiwanegoAdresata);
+        nazwiskoPoszukiwanegoAdresata = Utils::readLine();
+        nazwiskoPoszukiwanegoAdresata = Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(nazwiskoPoszukiwanegoAdresata);
 
         for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
         {
@@ -239,7 +239,7 @@ char ContactsManager::wybierzOpcjeZMenuEdycja() {
     cout << "5 - Adres" << endl;
     cout << "6 - Powrot " << endl;
     cout << endl << "Twoj wybor: ";
-    wybor = MetodyPomocnicze::wczytajZnak();
+    wybor = Utils::readSign();
 
     return wybor;
 }

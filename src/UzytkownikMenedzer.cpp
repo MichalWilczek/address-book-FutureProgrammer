@@ -1,6 +1,6 @@
 #include "UzytkownikMenedzer.h"
 
-void UsersManager::rejestracjaUzytkownika() {
+void UsersManager::registerUser() {
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(uzytkownik);
@@ -17,7 +17,7 @@ int UsersManager::pobierzIdZalogowanegoUzytkownika() {
         throw invalid_argument("received value lower than 1...");
 }
 
-void UsersManager::wypiszWszystkichUzytkownikow() {
+void UsersManager::showUsers() {
     for (int i = 0; i < uzytkownicy.size(); i++) {
         cout << uzytkownicy[i].pobierzId() << endl;
         cout << uzytkownicy[i].pobierzLogin() << endl;
@@ -67,12 +67,12 @@ bool UsersManager::czyIstniejeLogin(string login) {
     return false;
 }
 
-void UsersManager::logowanieUzytkownika() {
+void UsersManager::logInUser() {
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
 
     cout << endl << "Podaj login: ";
-    login = MetodyPomocnicze::wczytajLinie();
+    login = Utils::readLine();
 
     vector <Uzytkownik>::iterator itr = uzytkownicy.begin();
     while (itr != uzytkownicy.end())
@@ -82,7 +82,7 @@ void UsersManager::logowanieUzytkownika() {
             for (int iloscProb = 3; iloscProb > 0; iloscProb--)
             {
                 cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                haslo = MetodyPomocnicze::wczytajLinie();
+                haslo = Utils::readLine();
 
                 if (itr->pobierzHaslo() == haslo)
                 {
@@ -103,11 +103,11 @@ void UsersManager::logowanieUzytkownika() {
     return;
 }
 
-void UsersManager::zmianaHaslaZalogowanegoUzytkownika()
+void UsersManager::changePasswordLoggedInUser()
 {
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
-    noweHaslo = MetodyPomocnicze::wczytajLinie();
+    noweHaslo = Utils::readLine();
 
     for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
     {
@@ -121,6 +121,6 @@ void UsersManager::zmianaHaslaZalogowanegoUzytkownika()
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
-void UsersManager::wylogowanieUzytkownika() {
+void UsersManager::logOutUser() {
     idZalogowanegoUzytkownika = 0;
 }

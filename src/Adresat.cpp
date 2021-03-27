@@ -11,11 +11,11 @@ void Adresat::ustawIdUzytkownika(int noweIdUzytkownika) {
 }
 
 void Adresat::ustawImie(string noweImie) {
-	imie = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(noweImie);
+	imie = Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(noweImie);
 }
 
 void Adresat::ustawNazwisko(string noweNazwisko) {
-	nazwisko = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(noweNazwisko);
+	nazwisko = Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(noweNazwisko);
 }
 
 void Adresat::ustawNumerTelefonu(string nowyNumerTelefonu) {

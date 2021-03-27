@@ -144,14 +144,14 @@ char ContactBook::chooseOptionMainMenu() {
     char wybor = { 0 };
 
     system("cls");
-    cout << "    >>> MENU  GLOWNE <<<" << endl;
+    cout << "    >>> MAIN MENU <<<" << endl;
     cout << "---------------------------" << endl;
-    cout << "1. Rejestracja" << endl;
-    cout << "2. Logowanie" << endl;
-    cout << "9. Koniec programu" << endl;
+    cout << "1. Register user" << endl;
+    cout << "2. Log in" << endl;
+    cout << "9. End of program" << endl;
     cout << "---------------------------" << endl;
-    cout << "Twoj wybor: ";
-    wybor = MetodyPomocnicze::wczytajZnak();
+    cout << "Your choice: ";
+    wybor = Utils::readSign();
 
     return wybor;
 }
@@ -160,20 +160,20 @@ char ContactBook::chooseOptionUserMenu() {
     char wybor = { 0 };
 
     system("cls");
-    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+    cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
-    cout << "1. Dodaj adresata" << endl;
-    cout << "2. Wyszukaj po imieniu" << endl;
-    cout << "3. Wyszukaj po nazwisku" << endl;
-    cout << "4. Wyswietl adresatow" << endl;
-    cout << "5. Usun adresata" << endl;
-    cout << "6. Edytuj adresata" << endl;
+    cout << "1. Add contact" << endl;
+    cout << "2. Search contact by first name" << endl;
+    cout << "3. Search contact by surname" << endl;
+    cout << "4. Show contacts" << endl;
+    cout << "5. Delete contact" << endl;
+    cout << "6. Edit contact" << endl;
     cout << "---------------------------" << endl;
-    cout << "7. Zmien haslo" << endl;
-    cout << "8. Wyloguj sie" << endl;
+    cout << "7. Change password" << endl;
+    cout << "8. Log out" << endl;
     cout << "---------------------------" << endl;
-    cout << "Twoj wybor: ";
-    wybor = MetodyPomocnicze::wczytajZnak();
+    cout << "Your choice: ";
+    wybor = Utils::readSign();
 
     return wybor;
 }

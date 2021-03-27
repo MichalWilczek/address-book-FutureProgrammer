@@ -176,8 +176,8 @@ Adresat PlikZAdresami::pobierzDaneAdresata(string daneAdresataOddzielonePionowym
 
 int PlikZAdresami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) {
     int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
-    int idUzytkownika = MetodyPomocnicze::konwersjaStringNaInt(
-        MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
+    int idUzytkownika = Utils::convertStringIntoInt(
+        Utils::readNumber(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
 
     return idUzytkownika;
 }
@@ -185,8 +185,8 @@ int PlikZAdresami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(stri
 int PlikZAdresami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) {
     int pozycjaRozpoczeciaIdAdresata = 0;
 
-    string idAdresataStr = MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdAdresata);
-    int idAdresata = MetodyPomocnicze::konwersjaStringNaInt(idAdresataStr);
+    string idAdresataStr = Utils::readNumber(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdAdresata);
+    int idAdresata = Utils::convertStringIntoInt(idAdresataStr);
     return idAdresata;
 }
 
@@ -214,8 +214,8 @@ void PlikZAdresami::dopiszAdresataDoPliku(Adresat adresat) {
 string PlikZAdresami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat) {
     string liniaZDanymiAdresata = "";
 
-    liniaZDanymiAdresata += MetodyPomocnicze::konwersjaIntNaString(adresat.pobierzId()) + '|';
-    liniaZDanymiAdresata += MetodyPomocnicze::konwersjaIntNaString(adresat.pobierzIdUzytkownika()) + '|';
+    liniaZDanymiAdresata += Utils::convertIntIntoString(adresat.pobierzId()) + '|';
+    liniaZDanymiAdresata += Utils::convertIntIntoString(adresat.pobierzIdUzytkownika()) + '|';
     liniaZDanymiAdresata += adresat.pobierzImie() + '|';
     liniaZDanymiAdresata += adresat.pobierzNazwisko() + '|';
     liniaZDanymiAdresata += adresat.pobierzNumerTelefonu() + '|';

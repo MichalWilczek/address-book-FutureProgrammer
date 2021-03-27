@@ -25,12 +25,12 @@ public:
 		: plikZAdresami(nazwaPlikuZAdresami), ID_ZALOGOWANEGO_UZYKOWNIKA(idZalogowanegoUzytkownika) {
 		adresaci = plikZAdresami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYKOWNIKA);
 	};
-	void dodajAdresata(int idZalogowanegoUzytkownika);
-	void usunAdresata();
-	void edytujAdresata();
-	void wyswietlWszystkichAdresatow();
-	void wyszukajAdresatowPoImieniu();
-	void wyszukajAdresatowPoNazwisku();
+	void addContact(int idZalogowanegoUzytkownika);
+	void deleteContact();
+	void editContact();
+	void showContactsOfLoggedInUser();
+	void searchContactByFirstName();
+	void searchContactBySurname();
 };
 
 #endif

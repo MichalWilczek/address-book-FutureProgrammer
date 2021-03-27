@@ -26,11 +26,11 @@ public:
 	};
 	bool czyUzytkownikJestZalogowany();
 	int pobierzIdZalogowanegoUzytkownika();
-	void wypiszWszystkichUzytkownikow();
-	void rejestracjaUzytkownika();
-	void logowanieUzytkownika();
-	void zmianaHaslaZalogowanegoUzytkownika();
-	void wylogowanieUzytkownika();
+	void showUsers();
+	void registerUser();
+	void logInUser();
+	void changePasswordLoggedInUser();
+	void logOutUser();
 };
 
 #endif
