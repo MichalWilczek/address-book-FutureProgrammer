@@ -1,0 +1,5 @@
+1|1|Andrzej|Rostkowski|456951753|rostek@o2.pl|Rostki 12|
+2|2|Andrew|Czerwononosy|951 687 412|x@gmail.com|Czerwona 4|
+5|1|Rudolf|Grojec|951 687 412|mich.wilcz@gmail.com|Czerwona 4|
+6|1|Asd|Asd|asd|asd|asd|
+7|1|Tyj|Yj|121212313|yj|yj|

@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <string>
-#include "UzytkownikMenedzer.h"
-#include "AdresMenedzer.h"
-#include "MetodyPomocnicze.h"
+#include "UsersManager.h"
+#include "ContactsManager.h"
+#include "Utils.h"
 using namespace std;
 
 class ContactBook {

@@ -11,8 +11,8 @@ void ContactBook::showUsers() {
 
 void ContactBook::logInUser() {
 	usersManager.logInUser();
-	if (usersManager.czyUzytkownikJestZalogowany()) {
-		addressesManager = new ContactsManager(NAZWA_PLIKU_Z_ADRESATAMI, usersManager.pobierzIdZalogowanegoUzytkownika());
+	if (usersManager.isUserLoggedIn()) {
+		addressesManager = new ContactsManager(NAZWA_PLIKU_Z_ADRESATAMI, usersManager.getIdUserLoggedIn());
 	}
 }
 
@@ -27,8 +27,8 @@ void ContactBook::logOutUser() {
 }
 
 void ContactBook::addContact() {
-	if (usersManager.czyUzytkownikJestZalogowany()) {
-		addressesManager->addContact(usersManager.pobierzIdZalogowanegoUzytkownika());
+	if (usersManager.isUserLoggedIn()) {
+		addressesManager->addContact(usersManager.getIdUserLoggedIn());
 	} else {
 		cout << "Log in first to add contact." << endl;
 		system("pause");
@@ -36,7 +36,7 @@ void ContactBook::addContact() {
 }
 
 void ContactBook::showContactsOfLoggedInUser() {
-	if (usersManager.czyUzytkownikJestZalogowany()) {
+	if (usersManager.isUserLoggedIn()) {
 		addressesManager->showContactsOfLoggedInUser();
 	}
 	else {
@@ -46,7 +46,7 @@ void ContactBook::showContactsOfLoggedInUser() {
 }
 
 void ContactBook::searchContactByFirstName() {
-    if (usersManager.czyUzytkownikJestZalogowany()) {
+    if (usersManager.isUserLoggedIn()) {
         addressesManager->searchContactByFirstName();
     }
     else {
@@ -56,7 +56,7 @@ void ContactBook::searchContactByFirstName() {
 }
 
 void ContactBook::searchContactBySurname() {
-    if (usersManager.czyUzytkownikJestZalogowany()) {
+    if (usersManager.isUserLoggedIn()) {
         addressesManager->searchContactBySurname();
     }
     else {
@@ -66,7 +66,7 @@ void ContactBook::searchContactBySurname() {
 }
 
 void ContactBook::deleteContact() {
-    if (usersManager.czyUzytkownikJestZalogowany()) {
+    if (usersManager.isUserLoggedIn()) {
         addressesManager->deleteContact();
     }
     else {
@@ -76,7 +76,7 @@ void ContactBook::deleteContact() {
 }
 
 void ContactBook::editContact() {
-    if (usersManager.czyUzytkownikJestZalogowany()) {
+    if (usersManager.isUserLoggedIn()) {
         addressesManager->editContact();
     }
     else {
@@ -89,7 +89,7 @@ void ContactBook::run() {
     char wybor = { 0 };
 
     while (true) {
-        if (!usersManager.czyUzytkownikJestZalogowany()) {
+        if (!usersManager.isUserLoggedIn()) {
             wybor = chooseOptionMainMenu();
 
             switch (wybor) {
@@ -148,7 +148,7 @@ char ContactBook::chooseOptionMainMenu() {
     cout << "---------------------------" << endl;
     cout << "1. Register user" << endl;
     cout << "2. Log in" << endl;
-    cout << "9. End of program" << endl;
+    cout << "9. Exit" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
     wybor = Utils::readSign();
