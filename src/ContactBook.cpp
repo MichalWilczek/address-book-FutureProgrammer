@@ -12,7 +12,7 @@ void ContactBook::showUsers() {
 void ContactBook::logInUser() {
 	usersManager.logInUser();
 	if (usersManager.isUserLoggedIn()) {
-		addressesManager = new ContactsManager(NAZWA_PLIKU_Z_ADRESATAMI, usersManager.getIdUserLoggedIn());
+		addressesManager = new ContactsManager(TEXTFILE_CONTACTS, usersManager.getIdUserLoggedIn());
 	}
 }
 

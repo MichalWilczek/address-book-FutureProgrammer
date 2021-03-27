@@ -1,5 +1,5 @@
-#ifndef KSIAZKAADRESOWA_H
-#define KSIAZKAADRESOWA_H
+#ifndef CONTACTBOOK_H
+#define CONTACTBOOK_H
 
 #include <iostream>
 #include <string>
@@ -11,14 +11,14 @@ using namespace std;
 class ContactBook {
 	UsersManager usersManager;
 	ContactsManager *addressesManager;
-	const string NAZWA_PLIKU_Z_ADRESATAMI;
+	const string TEXTFILE_CONTACTS;
 	
 	char chooseOptionMainMenu();
 	char chooseOptionUserMenu();
 
 public:
-	ContactBook(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) :
-		usersManager(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami) {
+	ContactBook(string textfileUsers, string textfileContacts) :
+		usersManager(textfileUsers), TEXTFILE_CONTACTS(textfileContacts) {
 		addressesManager = NULL;
 	};
 	~ContactBook() {
