@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class UzytkownikMenedzer {
+class UsersManager {
 	int idZalogowanegoUzytkownika;
 	vector <Uzytkownik> uzytkownicy;
 	PlikZUzytkownikami plikZUzytkownikami;
@@ -20,7 +20,7 @@ class UzytkownikMenedzer {
 	bool czyIstniejeLogin(string login);
 
 public:
-	UzytkownikMenedzer(string nazwaPlikuZUzytkonikami) : plikZUzytkownikami(nazwaPlikuZUzytkonikami) {
+	UsersManager(string nazwaPlikuZUzytkonikami) : plikZUzytkownikami(nazwaPlikuZUzytkonikami) {
 		uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 		idZalogowanegoUzytkownika = 0;
 	};

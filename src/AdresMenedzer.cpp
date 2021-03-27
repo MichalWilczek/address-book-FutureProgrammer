@@ -1,6 +1,6 @@
 #include "AdresMenedzer.h"
 
-void AdresMenedzer::dodajAdresata(int idZalogowanegoUzytkownika) {
+void ContactsManager::dodajAdresata(int idZalogowanegoUzytkownika) {
     Adresat adresat;
 
     system("cls");
@@ -11,7 +11,7 @@ void AdresMenedzer::dodajAdresata(int idZalogowanegoUzytkownika) {
     plikZAdresami.dopiszAdresataDoPliku(adresat);
 }
 
-void AdresMenedzer::usunAdresata() {
+void ContactsManager::usunAdresata() {
     int idUsuwanegoAdresata = 0;
     int numerLiniiUsuwanegoAdresata = 0;
 
@@ -44,7 +44,7 @@ void AdresMenedzer::usunAdresata() {
     }
 }
 
-void AdresMenedzer::edytujAdresata() {
+void ContactsManager::edytujAdresata() {
     system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
@@ -103,7 +103,7 @@ void AdresMenedzer::edytujAdresata() {
     system("pause");
 }
 
-int AdresMenedzer::podajIdWybranegoAdresata()
+int ContactsManager::podajIdWybranegoAdresata()
 {
     int idWybranegoAdresata = 0;
     cout << "Podaj numer ID Adresata: ";
@@ -111,7 +111,7 @@ int AdresMenedzer::podajIdWybranegoAdresata()
     return idWybranegoAdresata;
 }
 
-Adresat AdresMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika) {
+Adresat ContactsManager::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika) {
     
     cout << "Podaj imie: ";
     string imie = MetodyPomocnicze::wczytajLinie();
@@ -133,7 +133,7 @@ Adresat AdresMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika) {
     return adresat;
 }
 
-void AdresMenedzer::wyswietlWszystkichAdresatow() {
+void ContactsManager::wyswietlWszystkichAdresatow() {
     system("cls");
     if (!adresaci.empty()) {
         cout << "             >>> ADRESACI <<<" << endl;
@@ -148,7 +148,7 @@ void AdresMenedzer::wyswietlWszystkichAdresatow() {
     system("pause");
 }
 
-void AdresMenedzer::wyszukajAdresatowPoImieniu() {
+void ContactsManager::wyszukajAdresatowPoImieniu() {
     string imiePoszukiwanegoAdresata = "";
     int iloscAdresatow = 0;
 
@@ -179,7 +179,7 @@ void AdresMenedzer::wyszukajAdresatowPoImieniu() {
     system("pause");
 }
 
-void AdresMenedzer::wyszukajAdresatowPoNazwisku() {
+void ContactsManager::wyszukajAdresatowPoNazwisku() {
     string nazwiskoPoszukiwanegoAdresata;
     int iloscAdresatow = 0;
 
@@ -210,14 +210,14 @@ void AdresMenedzer::wyszukajAdresatowPoNazwisku() {
     system("pause");
 }
 
-void AdresMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow) {
+void ContactsManager::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow) {
     if (iloscAdresatow == 0)
         cout << endl << "W ksiazce adresowej nie ma adresatow z tymi danymi." << endl;
     else
         cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << iloscAdresatow << endl << endl;
 }
 
-void AdresMenedzer::wyswietlDaneAdresata(Adresat adresat) {
+void ContactsManager::wyswietlDaneAdresata(Adresat adresat) {
     cout << endl << "Id:                 " << adresat.pobierzId() << endl;
     cout << "Imie:               " << adresat.pobierzImie() << endl;
     cout << "Nazwisko:           " << adresat.pobierzNazwisko() << endl;
@@ -226,7 +226,7 @@ void AdresMenedzer::wyswietlDaneAdresata(Adresat adresat) {
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
 }
 
-char AdresMenedzer::wybierzOpcjeZMenuEdycja() {
+char ContactsManager::wybierzOpcjeZMenuEdycja() {
     char wybor;
 
     cout << endl << "   >>> MENU  EDYCJA <<<" << endl;

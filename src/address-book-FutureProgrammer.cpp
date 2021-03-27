@@ -1,12 +1,12 @@
 #include <iostream>
-#include "KsiazkaAdresowa.h"
+#include "ContactBook.h"
 
 using namespace std;
 
 int main()
 {
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
-    ksiazkaAdresowa.run();
+    ContactBook contactsBook("Uzytkownicy.txt", "Adresaci.txt");
+    contactsBook.run();
     
     return 0;
 }

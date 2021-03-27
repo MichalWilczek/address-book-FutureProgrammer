@@ -1,145 +1,146 @@
-#include "KsiazkaAdresowa.h"
+#include "ContactBook.h"
 
-void KsiazkaAdresowa::rejestracjaUzytkownika() {
-	uzytkownikMenedzer.rejestracjaUzytkownika();
+
+void ContactBook::registerUser() {
+	usersManager.registerUser();
 }
 
-void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
-	uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
+void ContactBook::showUsers() {
+	usersManager.showUsers();
 }
 
-void KsiazkaAdresowa::logowanieUzytkownika() {
-	uzytkownikMenedzer.logowanieUzytkownika();
-	if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
-		adresMenedzer = new AdresMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+void ContactBook::logInUser() {
+	usersManager.logInUser();
+	if (usersManager.czyUzytkownikJestZalogowany()) {
+		addressesManager = new ContactsManager(NAZWA_PLIKU_Z_ADRESATAMI, usersManager.pobierzIdZalogowanegoUzytkownika());
 	}
 }
 
-void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
-	uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
+void ContactBook::changePasswordLoggedInUser() {
+	usersManager.changePasswordLoggedInUser();
 }
 
-void KsiazkaAdresowa::wylogowanieUzytkownika() {
-	uzytkownikMenedzer.wylogowanieUzytkownika();
-	delete adresMenedzer;
-	adresMenedzer = NULL;
+void ContactBook::logOutUser() {
+	usersManager.logOutUser();
+	delete addressesManager;
+	addressesManager = NULL;
 }
 
-void KsiazkaAdresowa::dodajAdresata() {
-	if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
-		adresMenedzer->dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+void ContactBook::addContact() {
+	if (usersManager.czyUzytkownikJestZalogowany()) {
+		addressesManager->addContact(usersManager.pobierzIdZalogowanegoUzytkownika());
 	} else {
-		cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+		cout << "Log in first to add contact." << endl;
 		system("pause");
 	}
 }
 
-void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
-	if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
-		adresMenedzer->wyswietlWszystkichAdresatow();
+void ContactBook::showContactsOfLoggedInUser() {
+	if (usersManager.czyUzytkownikJestZalogowany()) {
+		addressesManager->showContactsOfLoggedInUser();
 	}
 	else {
-		cout << "Aby wyswietlic adresatow, nalezy najpierw sie zalogowac" << endl;
+		cout << "Log in first to show contacts." << endl;
 		system("pause");
 	}
 }
 
-void KsiazkaAdresowa::wyszukajAdresatowPoImieniu() {
-    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
-        adresMenedzer->wyszukajAdresatowPoImieniu();
+void ContactBook::searchContactByFirstName() {
+    if (usersManager.czyUzytkownikJestZalogowany()) {
+        addressesManager->searchContactByFirstName();
     }
     else {
-        cout << "Aby wyszukac adresatow po imieniu, nalezy najpierw sie zalogowac" << endl;
+        cout << "Log in first to find contacts by first name." << endl;
         system("pause");
     }
 }
 
-void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku() {
-    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
-        adresMenedzer->wyszukajAdresatowPoNazwisku();
+void ContactBook::searchContactBySurname() {
+    if (usersManager.czyUzytkownikJestZalogowany()) {
+        addressesManager->searchContactBySurname();
     }
     else {
-        cout << "Aby wyszukac adresatow po nazwisku, nalezy najpierw sie zalogowac" << endl;
+        cout << "Log in first to find contacts by surname." << endl;
         system("pause");
     }
 }
 
-void KsiazkaAdresowa::usunAdresata() {
-    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
-        adresMenedzer->usunAdresata();
+void ContactBook::deleteContact() {
+    if (usersManager.czyUzytkownikJestZalogowany()) {
+        addressesManager->deleteContact();
     }
     else {
-        cout << "Aby usunac adresata, nalezy najpierw sie zalogowac" << endl;
+        cout << "Log in first to delete contact." << endl;
         system("pause");
     }
 }
 
-void KsiazkaAdresowa::edytujAdresata() {
-    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
-        adresMenedzer->edytujAdresata();
+void ContactBook::editContact() {
+    if (usersManager.czyUzytkownikJestZalogowany()) {
+        addressesManager->editContact();
     }
     else {
-        cout << "Aby edytowac adresata, nalezy najpierw sie zalogowac" << endl;
+        cout << "Log in first to edit contact." << endl;
         system("pause");
     }
 }
 
-void KsiazkaAdresowa::run() {
+void ContactBook::run() {
     char wybor = { 0 };
 
     while (true) {
-        if (!uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
-            wybor = wybierzOpcjeZMenuGlownego();
+        if (!usersManager.czyUzytkownikJestZalogowany()) {
+            wybor = chooseOptionMainMenu();
 
             switch (wybor) {
             case '1':
-                rejestracjaUzytkownika();
+                registerUser();
                 break;
             case '2':
-                logowanieUzytkownika();
+                logInUser();
                 break;
             case '9':
                 exit(0);
                 break;
             default:
-                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
+                cout << endl << "No such option available." << endl << endl;
                 system("pause");
                 break;
             }
         } else {
-            wybor = wybierzOpcjeZMenuUzytkownika();
+            wybor = chooseOptionUserMenu();
 
             switch (wybor) {
             case '1':
-                dodajAdresata();
+                addContact();
                 break;
             case '2':
-                wyszukajAdresatowPoImieniu();
+                searchContactByFirstName();
                 break;
             case '3':
-                wyszukajAdresatowPoNazwisku();
+                searchContactBySurname();
                 break;
             case '4':
-                wyswietlWszystkichAdresatow();
+                showContactsOfLoggedInUser();
                 break;
             case '5':
-                usunAdresata();
+                deleteContact();
                 break;
             case '6':
-                edytujAdresata();
+                editContact();
                 break;
             case '7':
-                zmianaHaslaZalogowanegoUzytkownika();
+                changePasswordLoggedInUser();
                 break;
             case '8':
-                wylogowanieUzytkownika();
+                logOutUser();
                 break;
             }
         }
     }
 }
 
-char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego() {
+char ContactBook::chooseOptionMainMenu() {
     char wybor = { 0 };
 
     system("cls");
@@ -155,7 +156,7 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego() {
     return wybor;
 }
 
-char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika() {
+char ContactBook::chooseOptionUserMenu() {
     char wybor = { 0 };
 
     system("cls");

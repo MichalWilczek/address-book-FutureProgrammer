@@ -1,6 +1,6 @@
 #include "UzytkownikMenedzer.h"
 
-void UzytkownikMenedzer::rejestracjaUzytkownika() {
+void UsersManager::rejestracjaUzytkownika() {
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(uzytkownik);
@@ -10,14 +10,14 @@ void UzytkownikMenedzer::rejestracjaUzytkownika() {
     system("pause");
 }
 
-int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
+int UsersManager::pobierzIdZalogowanegoUzytkownika() {
     if (idZalogowanegoUzytkownika > 0)
         return idZalogowanegoUzytkownika;
     else
         throw invalid_argument("received value lower than 1...");
 }
 
-void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
+void UsersManager::wypiszWszystkichUzytkownikow() {
     for (int i = 0; i < uzytkownicy.size(); i++) {
         cout << uzytkownicy[i].pobierzId() << endl;
         cout << uzytkownicy[i].pobierzLogin() << endl;
@@ -25,7 +25,7 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
     }
 }
 
-Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
+Uzytkownik UsersManager::podajDaneNowegoUzytkownika() {
     Uzytkownik uzytkownik;
 
     uzytkownik.ustawId(pobierzIdNowegoUzytkownika());
@@ -45,19 +45,19 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
     return uzytkownik;
 }
 
-bool UzytkownikMenedzer::czyUzytkownikJestZalogowany() {
+bool UsersManager::czyUzytkownikJestZalogowany() {
     if (idZalogowanegoUzytkownika > 0) return true;
     else return false;
 }
 
-int UzytkownikMenedzer::pobierzIdNowegoUzytkownika() {
+int UsersManager::pobierzIdNowegoUzytkownika() {
     if (uzytkownicy.empty() == true)
         return 1;
     else
         return uzytkownicy.back().pobierzId() + 1;
 }
 
-bool UzytkownikMenedzer::czyIstniejeLogin(string login) {
+bool UsersManager::czyIstniejeLogin(string login) {
     for (int i = 0; i < uzytkownicy.size(); i++) {
         if (uzytkownicy[i].pobierzLogin() == login) {
             cout << endl << "Istnieje uzytkownik o podanym loginie." << endl;
@@ -67,7 +67,7 @@ bool UzytkownikMenedzer::czyIstniejeLogin(string login) {
     return false;
 }
 
-void UzytkownikMenedzer::logowanieUzytkownika() {
+void UsersManager::logowanieUzytkownika() {
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
 
@@ -103,7 +103,7 @@ void UzytkownikMenedzer::logowanieUzytkownika() {
     return;
 }
 
-void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
+void UsersManager::zmianaHaslaZalogowanegoUzytkownika()
 {
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
@@ -121,6 +121,6 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
-void UzytkownikMenedzer::wylogowanieUzytkownika() {
+void UsersManager::wylogowanieUzytkownika() {
     idZalogowanegoUzytkownika = 0;
 }

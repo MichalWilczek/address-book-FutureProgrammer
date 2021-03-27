@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class AdresMenedzer {
+class ContactsManager {
 	const int ID_ZALOGOWANEGO_UZYKOWNIKA;	
 	vector <Adresat> adresaci;
 	PlikZAdresami plikZAdresami;
@@ -21,7 +21,7 @@ class AdresMenedzer {
 	char wybierzOpcjeZMenuEdycja();
 
 public:
-	AdresMenedzer(string nazwaPlikuZAdresami, int idZalogowanegoUzytkownika)
+	ContactsManager(string nazwaPlikuZAdresami, int idZalogowanegoUzytkownika)
 		: plikZAdresami(nazwaPlikuZAdresami), ID_ZALOGOWANEGO_UZYKOWNIKA(idZalogowanegoUzytkownika) {
 		adresaci = plikZAdresami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYKOWNIKA);
 	};
